@@ -8,7 +8,7 @@
 - [Usage](#usage)
 
 ## Project Overview
-This repository contains scripts to ingest music chart data and enrich it with artist genre information. The data pipeline downloads data from Kaggle, normalizes artist identifiers, and merges the datasets to provide genre classifications for Billboard Hot 100 entries.
+This repository contains scripts to ingest music chart data and enrich it with artist genre information. The data pipeline downloads data from Kaggle, normalizes artist identifiers, and merges the datasets to provide genre classifications for Billboard Hot 100 entries. The final goal of this project is to derive fashion and hairstyle trends from the underlying data.
 
 ## Data Sources
 The project relies on two external datasets hosted on Kaggle:
