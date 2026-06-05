@@ -1,4 +1,4 @@
-# Fashion Trend Analytics
+# WIP: Fashion Trend Analytics
 
 ## Table of Contents
 - [Project Overview](#project-overview)
