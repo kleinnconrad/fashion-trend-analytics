@@ -1,0 +1,43 @@
+name: Ingest Hairstyle Trends Data
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Run monthly on the 1st
+  workflow_dispatch: # Allow manual triggers
+
+permissions:
+  contents: write
+
+jobs:
+  ingest-hairstyles:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Ingest Ngram Hairstyle Data
+        run: python src/ingest_hairstyles.py
+        
+      - name: Ingest Google Trends Hairstyle Data
+        run: python src/ingest_google_trends.py
+        
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/hairstyle_trends_complete_1950_2019.csv
+          git add data/hairstyle_trends_google_trends_2004_today.csv
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update hairstyle trends datasets [skip ci]"
+          git push

@@ -11,15 +11,21 @@
 This repository contains scripts to ingest music chart data and enrich it with artist genre information. The data pipeline downloads data from Kaggle, normalizes artist identifiers, and merges the datasets to provide genre classifications for Billboard Hot 100 entries. The final goal of this project is to derive fashion and hairstyle trends from the underlying data.
 
 ## Data Sources
-The project relies on two external datasets hosted on Kaggle:
+The project relies on external datasets hosted on Kaggle:
 - `ludmin/billboard`: Contains historical Billboard Hot 100 charts.
 - `harshdprajapati/worldwide-music-artists-dataset-with-image`: Contains metadata for global music artists, including their associated genres.
+
+In addition, the project ingests trend data for a curated list of hairstyles:
+- Google Books Ngram Dataset (`data/hairstyle_trends_complete_1950_2019.csv`): Contains scaled yearly frequency data from 1950 to 2019 based on printed literature.
+- Google Trends Dataset (`data/hairstyle_trends_google_trends_2004_today.csv`): Contains normalized monthly search interest data from 2004 to today.
 
 ## Scripts
 The Python code is located in the `src/` directory.
 
 - `ingest_data.py`: Authenticates with the Kaggle API using environment variables (`KAGGLE_USERNAME` and `KAGGLE_KEY`) and downloads the required datasets into the `data/` directory.
 - `join_datasets.py`: Reads the downloaded CSV files, normalizes the artist names (e.g., lowercasing, removing punctuation, and extracting the primary artist from collaborative tracks), and performs a left join. The output is saved as `data/hot100_with_genre.csv`.
+- `ingest_hairstyles.py`: Fetches historical yearly frequencies from Google Books Ngrams for the hairstyles listed in `config/hairstyles.json`.
+- `ingest_google_trends.py`: Fetches monthly relative search interest from Google Trends for the hairstyles listed in `config/hairstyles.json`.
 
 ## Automation
 A GitHub Actions workflow is defined in `.github/workflows/ingest_and_join.yml`. This workflow:
@@ -47,4 +53,9 @@ To run the pipeline locally:
 4. Execute the join script:
    ```bash
    python src/join_datasets.py
+   ```
+5. Execute the hairstyle ingestion scripts to pull latest trends:
+   ```bash
+   python src/ingest_hairstyles.py
+   python src/ingest_google_trends.py
    ```

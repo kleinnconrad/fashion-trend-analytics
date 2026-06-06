@@ -22,6 +22,8 @@ This file contains foundational instructions and conventions for developing in t
 - Follow PEP 8 style guidelines for Python code.
 
 ## 5. Language & Documentation Style
+- **English Only:** All code, comments, documentation, and filenames in this repository must be strictly in English.
+- **No Emojis:** Never use emojis anywhere in the repository, including code, documentation, and commit messages.
 - **Tone:** Maintain a sober, objective, and professional tone across all documentation (including `README.md`).
 - **Vocabulary:** Use only as many adjectives as strictly required. Do not use superlatives (e.g., "fastest", "best", "most") or filler words.
 - **Docstrings:** All modules, classes, and public functions must include clear, structured docstrings (e.g., Google-style) detailing their purpose, arguments, and return types.
