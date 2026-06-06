@@ -1,5 +1,15 @@
 # Antigravity Guidelines
 
+## Table of Contents
+- [1. Directory Structure](#1-directory-structure)
+- [2. Dependencies](#2-dependencies)
+- [3. Environment Execution](#3-environment-execution)
+- [4. Code Quality & Formatting](#4-code-quality--formatting)
+- [5. Language & Documentation Style](#5-language--documentation-style)
+- [6. Linting & Validation](#6-linting--validation)
+- [7. Security Best Practices](#7-security-best-practices)
+- [8. Error Handling](#8-error-handling)
+
 This file contains foundational instructions and conventions for developing in this repository. AI agents and developers must strictly adhere to these rules.
 
 ## 1. Directory Structure
@@ -27,7 +37,7 @@ This file contains foundational instructions and conventions for developing in t
 - **Tone:** Maintain a sober, objective, and professional tone across all documentation (including `README.md`).
 - **Vocabulary:** Use only as many adjectives as strictly required. Do not use superlatives (e.g., "fastest", "best", "most") or filler words.
 - **Docstrings:** All modules, classes, and public functions must include clear, structured docstrings (e.g., Google-style) detailing their purpose, arguments, and return types.
-- **Table of Content:** All markdown files should have a table of content if they contain more than one headline
+- **Table of Content:** All markdown files should have a table of content if they contain more than one paragraph.
 
 ## 6. Linting & Validation
 - Code must pass standard Python linting and formatting checks (e.g., `ruff`, `flake8`, or `black`) before being finalized.
